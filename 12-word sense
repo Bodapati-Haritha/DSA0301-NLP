@@ -1,0 +1,14 @@
+import nltk
+from nltk.corpus import wordnet
+from nltk.wsd import lesk
+nltk.download('punkt')
+nltk.download('wordnet')
+sentence = "I went to the bank to deposit some money."
+tokens = nltk.word_tokenize(sentence)
+bank_synset = lesk(tokens, 'bank')
+if bank_synset:
+    print("Word Sense:", bank_synset.name())
+    print("Definition:", bank_synset.definition())
+examples = bank_synset.examples()
+if examples:
+    print("Examples:", examples)
