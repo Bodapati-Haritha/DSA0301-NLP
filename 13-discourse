@@ -1,0 +1,16 @@
+class DiscourseNode:
+    def __init__(self, text):
+        self.text = text
+        self.children = []
+    def add_child(self, child_node):
+        self.children.append(child_node)
+sentence = ["He need to buy car(s1)", "He want to talk(s2)"]
+root = DiscourseNode("Discourse Root")
+root.add_child(DiscourseNode(sentence[0]))
+root.add_child(DiscourseNode(sentence[1]))
+root.children[0].add_child(root.children[1])
+def print_tree(node, level=0):
+    print("\t" * level + node.text)
+    for child in node.children:
+        print_tree(child, level + 1)
+print_tree(root)
